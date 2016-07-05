@@ -13,6 +13,8 @@
 		AC1391321D2C0C01004C9058 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC1391311D2C0C01004C9058 /* Assets.xcassets */; };
 		AC1391351D2C0C01004C9058 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC1391331D2C0C01004C9058 /* LaunchScreen.storyboard */; };
 		AC13913D1D2C0C35004C9058 /* FuseScore.png in Resources */ = {isa = PBXBuildFile; fileRef = AC13913C1D2C0C35004C9058 /* FuseScore.png */; };
+		AC13913F1D2C17C4004C9058 /* Score.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC13913E1D2C17C4004C9058 /* Score.swift */; };
+		AC1391431D2C5397004C9058 /* AllScoresViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1391421D2C5397004C9058 /* AllScoresViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		AC1391341D2C0C01004C9058 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AC1391361D2C0C01004C9058 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AC13913C1D2C0C35004C9058 /* FuseScore.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = FuseScore.png; path = ../../../FuseScore.png; sourceTree = "<group>"; };
+		AC13913E1D2C17C4004C9058 /* Score.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Score.swift; sourceTree = "<group>"; };
+		AC1391421D2C5397004C9058 /* AllScoresViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllScoresViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,9 +60,11 @@
 		AC1391291D2C0C01004C9058 /* Fuse Score */ = {
 			isa = PBXGroup;
 			children = (
+				AC1391421D2C5397004C9058 /* AllScoresViewController.swift */,
 				AC13912A1D2C0C01004C9058 /* AppDelegate.swift */,
 				AC13912C1D2C0C01004C9058 /* ViewController.swift */,
 				AC13912E1D2C0C01004C9058 /* Main.storyboard */,
+				AC13913E1D2C17C4004C9058 /* Score.swift */,
 				AC13913C1D2C0C35004C9058 /* FuseScore.png */,
 				AC1391311D2C0C01004C9058 /* Assets.xcassets */,
 				AC1391331D2C0C01004C9058 /* LaunchScreen.storyboard */,
@@ -140,7 +146,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				AC13912D1D2C0C01004C9058 /* ViewController.swift in Sources */,
+				AC13913F1D2C17C4004C9058 /* Score.swift in Sources */,
 				AC13912B1D2C0C01004C9058 /* AppDelegate.swift in Sources */,
+				AC1391431D2C5397004C9058 /* AllScoresViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -17,6 +17,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var skiTextField: UITextField!
     @IBOutlet weak var totalTextView: UITextView!
     
+    var graphArr: [rowCycleSki] = []
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,21 +40,29 @@ class ViewController: UIViewController {
             let cycleText: String = cycleTextField.text!
             let skiText: String = skiTextField.text!
             
-            if let rowNum = Int(rowText) {
-                total += rowNum
+            let rowNum = Int(rowText)
+            let cycleNum = Int(cycleText)
+            let skiNum = Int(skiText)
+            
+            if  (rowNum != nil){
+                total += rowNum!
             }
-            if let cycleNum = Int(cycleText) {
-                total += cycleNum
+            if  (cycleNum != nil){
+                total += cycleNum!
             }
             
-            if let skiNum = Int(skiText) {
-                total += skiNum
+            if  (skiNum != nil){
+                total += skiNum!
             }
+            
+            let finalScore = rowCycleSki(row: rowNum!, cycle: cycleNum!, ski: skiNum!, total: total)
+            graphArr.append(finalScore)
         }
-        totalTextView.text = String(total)
+        totalTextView.text = String(graphArr[0].cycle)
     }
     
     @IBAction func previousScores(sender: AnyObject) {
+        
         
     }
 
