@@ -29,6 +29,15 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+        if (segue.identifier == "allScoresViewController") {
+            let svc = segue.destinationViewController as! AllScoresViewController;
+            
+            svc.scoreArr = graphArr
+            
+        }
+    }
 
     @IBAction func saveScore(sender: AnyObject) {
         
@@ -65,6 +74,8 @@ class ViewController: UIViewController {
         
         
     }
+    
+    
 
 }
 
