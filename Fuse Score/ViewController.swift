@@ -30,6 +30,26 @@ class ViewController: UIViewController {
 
     @IBAction func saveScore(sender: AnyObject) {
         
+        var total: Int = 0;
+        
+        if(rowTextField != nil && cycleTextField != nil && skiTextField != nil){
+            
+            let rowText: String = rowTextField.text!
+            let cycleText: String = cycleTextField.text!
+            let skiText: String = skiTextField.text!
+            
+            if let rowNum = Int(rowText) {
+                total += rowNum
+            }
+            if let cycleNum = Int(cycleText) {
+                total += cycleNum
+            }
+            
+            if let skiNum = Int(skiText) {
+                total += skiNum
+            }
+        }
+        totalTextView.text = String(total)
     }
     
     @IBAction func previousScores(sender: AnyObject) {
