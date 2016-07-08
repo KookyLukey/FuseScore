@@ -161,21 +161,32 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e9S-rr-3PT" customClass="LineChartView" customModule="Charts">
+                                <rect key="frame" x="40" y="87" width="520" height="493"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="e9S-rr-3PT" secondAttribute="trailing" constant="20" id="5qH-Sf-9Z9"/>
+                            <constraint firstItem="e9S-rr-3PT" firstAttribute="top" secondItem="sU3-mz-bfR" secondAttribute="bottom" constant="23" id="Fdm-ni-Tkg"/>
+                            <constraint firstItem="e9S-rr-3PT" firstAttribute="leading" secondItem="2K9-Cg-Ukq" secondAttribute="leadingMargin" constant="20" id="WmD-Be-ya8"/>
+                            <constraint firstItem="4J0-gI-eV0" firstAttribute="top" secondItem="e9S-rr-3PT" secondAttribute="bottom" constant="20" id="ai8-Va-fLL"/>
+                        </constraints>
                     </view>
                     <connections>
+                        <outlet property="chartView" destination="e9S-rr-3PT" id="2mn-qo-5so"/>
                         <outlet property="testTextView" destination="2jZ-OZ-Aap" id="rCy-bM-jEj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sIg-8N-WBu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1658" y="320"/>
+            <point key="canvasLocation" x="1716" y="320"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--FuseScore-->
         <scene sceneID="c8K-mX-KnB">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="dvb-RQ-c6Q" sceneMemberID="viewController">
+                <navigationController title="FuseScore" automaticallyAdjustsScrollViewInsets="NO" id="dvb-RQ-c6Q" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="5Wt-GU-WQM">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
