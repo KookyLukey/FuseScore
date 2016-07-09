@@ -25,7 +25,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        loadData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -76,6 +76,10 @@ class ViewController: UIViewController {
             
         }
         totalTextView.text = String(total)
+        clearTextField(rowTextField)
+        clearTextField(cycleTextField)
+        clearTextField(skiTextField)
+        saveData()
     }
     
     @IBAction func previousScores(sender: AnyObject) {
@@ -83,7 +87,66 @@ class ViewController: UIViewController {
         
     }
     
+    func clearTextField(txtfld: UITextField){
+        txtfld.text = ""
+    }
     
+    func saveData(){
+        let rowData = NSKeyedArchiver.archivedDataWithRootObject(rowArr)
+        NSUserDefaults.standardUserDefaults().setObject(rowData, forKey: "row")
+        
+        let cycleData = NSKeyedArchiver.archivedDataWithRootObject(cycleArr)
+        NSUserDefaults.standardUserDefaults().setObject(cycleData, forKey: "cycle")
+        
+        let skiData = NSKeyedArchiver.archivedDataWithRootObject(skiArr)
+        NSUserDefaults.standardUserDefaults().setObject(skiData, forKey: "ski")
+        
+        let totalData = NSKeyedArchiver.archivedDataWithRootObject(totalArr)
+        NSUserDefaults.standardUserDefaults().setObject(totalData, forKey: "total")
+    }
+    
+    func loadData(){
+        let rowData = NSUserDefaults.standardUserDefaults().objectForKey("row") as? NSData
+        let cycleData = NSUserDefaults.standardUserDefaults().objectForKey("cycle") as? NSData
+        let skiData = NSUserDefaults.standardUserDefaults().objectForKey("ski") as? NSData
+        let totalData = NSUserDefaults.standardUserDefaults().objectForKey("total") as? NSData
+        
+        if let rowData = rowData {
+            let rowArray = NSKeyedUnarchiver.unarchiveObjectWithData(rowData) as? [Int]
+            
+            if let rowArray = rowArray {
+                rowArr = rowArray
+            }
+            
+        }
+        
+        if let cycleData = cycleData {
+            let cycleArray = NSKeyedUnarchiver.unarchiveObjectWithData(cycleData) as? [Int]
+            
+            if let cycleArray = cycleArray {
+                cycleArr = cycleArray
+            }
+            
+        }
+        
+        if let skiData = skiData {
+            let skiArray = NSKeyedUnarchiver.unarchiveObjectWithData(skiData) as? [Int]
+            
+            if let skiArray = skiArray {
+                skiArr = skiArray
+            }
+            
+        }
+        
+        if let totalData = totalData {
+            let totalArray = NSKeyedUnarchiver.unarchiveObjectWithData(totalData) as? [Int]
+            
+            if let totalArray = totalArray {
+                totalArr = totalArray
+            }
+            
+        }
+    }
 
 }
 
