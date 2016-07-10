@@ -21,16 +21,29 @@ class ViewController: UIViewController {
     var cycleArr: [Int] = []
     var skiArr: [Int] = []
     var totalArr: [Int] = []
+    var dateArr: [String] = []
+    
+    var currentDate = NSDate()
+    let dateFormatter = NSDateFormatter()
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let sendButton = UIBarButtonItem(title: "Settings", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(ViewController.settings(_:)))
+        
+        self.navigationItem.rightBarButtonItem = sendButton
         loadData()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func settings(sender: UIBarButtonItem){
+        
+        
+        
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
@@ -41,6 +54,7 @@ class ViewController: UIViewController {
             svc.cycleArr = cycleArr
             svc.skiArr = skiArr
             svc.totalArr = totalArr
+            svc.dateArr = dateArr
             
         }
     }
@@ -74,7 +88,11 @@ class ViewController: UIViewController {
             skiArr.append(skiNum!)
             totalArr.append(total)
             
+            dateFormatter.dateStyle = NSDateFormatterStyle.ShortStyle
+            let convertedDate = dateFormatter.stringFromDate(currentDate)
+            dateArr.append(convertedDate)
         }
+        
         totalTextView.text = String(total)
         clearTextField(rowTextField)
         clearTextField(cycleTextField)
@@ -103,6 +121,9 @@ class ViewController: UIViewController {
         
         let totalData = NSKeyedArchiver.archivedDataWithRootObject(totalArr)
         NSUserDefaults.standardUserDefaults().setObject(totalData, forKey: "total")
+        
+        let dateData = NSKeyedArchiver.archivedDataWithRootObject(dateArr)
+        NSUserDefaults.standardUserDefaults().setObject(dateData, forKey: "date")
     }
     
     func loadData(){
@@ -110,6 +131,7 @@ class ViewController: UIViewController {
         let cycleData = NSUserDefaults.standardUserDefaults().objectForKey("cycle") as? NSData
         let skiData = NSUserDefaults.standardUserDefaults().objectForKey("ski") as? NSData
         let totalData = NSUserDefaults.standardUserDefaults().objectForKey("total") as? NSData
+        let dateData = NSUserDefaults.standardUserDefaults().objectForKey("date") as? NSData
         
         if let rowData = rowData {
             let rowArray = NSKeyedUnarchiver.unarchiveObjectWithData(rowData) as? [Int]
@@ -143,6 +165,15 @@ class ViewController: UIViewController {
             
             if let totalArray = totalArray {
                 totalArr = totalArray
+            }
+            
+        }
+        
+        if let dateData = dateData {
+            let dateArray = NSKeyedUnarchiver.unarchiveObjectWithData(dateData) as? [String]
+            
+            if let dateArray = dateArray {
+                dateArr = dateArray
             }
             
         }

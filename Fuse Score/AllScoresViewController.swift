@@ -13,14 +13,15 @@ class AllScoresViewController: UIViewController, ChartViewDelegate {
 
     @IBOutlet weak var testTextView: UITextView!
     @IBOutlet weak var chartView: BarChartView!
+    @IBOutlet weak var grandTotalTextView: UITextView!
     
     var rowArr:[Int]!
     var cycleArr:[Int]!
     var skiArr:[Int]!
     var totalArr:[Int]!
+    var dateArr:[String]!
     
-    let days = ["Day 1", "Day 2", "Day 3", "Day 4", "Day 5", "Day 6", "Day 7"]
-    let dollars1 = [1453.0,2352,5431,1442,5451,6486,1173,5678,9234,1345,9411,2212]
+    var grandTotal = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,8 +35,15 @@ class AllScoresViewController: UIViewController, ChartViewDelegate {
         // 4
         self.chartView.noDataText = "No data provided"
         // 5
-        setChartData(days)
+        setChartData(dateArr)
         
+        for i in 0 ..< totalArr.count {
+            
+            grandTotal += totalArr[i]
+            
+        }
+        
+        grandTotalTextView.text = String(grandTotal)
     }
     
     func setChartData(days : [String]) {
@@ -46,7 +54,7 @@ class AllScoresViewController: UIViewController, ChartViewDelegate {
         }
         
         // 2 - create a data set with our array
-        let set1: LineChartDataSet = LineChartDataSet(yVals: yVals1, label: "First Set")
+        let set1: LineChartDataSet = LineChartDataSet(yVals: yVals1, label: "Row")
         set1.axisDependency = .Left // Line will correlate with left axis values
         set1.setColor(UIColor.redColor().colorWithAlphaComponent(0.5)) // our line's opacity is 50%
         set1.setCircleColor(UIColor.redColor()) // our circle will be dark red
@@ -62,7 +70,7 @@ class AllScoresViewController: UIViewController, ChartViewDelegate {
             yVals2.append(ChartDataEntry(value: Double(cycleArr[i]), xIndex: i))
         }
         
-        let set2: LineChartDataSet = LineChartDataSet(yVals: yVals2, label: "Second Set")
+        let set2: LineChartDataSet = LineChartDataSet(yVals: yVals2, label: "Cycle")
         set2.axisDependency = .Left // Line will correlate with left axis values
         set2.setColor(UIColor.greenColor().colorWithAlphaComponent(0.5))
         set2.setCircleColor(UIColor.greenColor())
@@ -78,7 +86,7 @@ class AllScoresViewController: UIViewController, ChartViewDelegate {
             yVals3.append(ChartDataEntry(value: Double(skiArr[i]), xIndex: i))
         }
         
-        let set3: LineChartDataSet = LineChartDataSet(yVals: yVals3, label: "Second Set")
+        let set3: LineChartDataSet = LineChartDataSet(yVals: yVals3, label: "Ski")
         set3.axisDependency = .Left // Line will correlate with left axis values
         set3.setColor(UIColor.blueColor().colorWithAlphaComponent(0.5))
         set3.setCircleColor(UIColor.blueColor())
