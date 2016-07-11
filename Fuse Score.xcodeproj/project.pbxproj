@@ -17,6 +17,7 @@
 		AC1391431D2C5397004C9058 /* AllScoresViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1391421D2C5397004C9058 /* AllScoresViewController.swift */; };
 		AC1391531D2DCFB9004C9058 /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC13914C1D2DCF80004C9058 /* Charts.framework */; };
 		AC1391541D2DCFB9004C9058 /* Charts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = AC13914C1D2DCF80004C9058 /* Charts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		AC1391591D331A91004C9058 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1391581D331A91004C9058 /* SettingsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +84,7 @@
 		AC13913E1D2C17C4004C9058 /* Score.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Score.swift; sourceTree = "<group>"; };
 		AC1391421D2C5397004C9058 /* AllScoresViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllScoresViewController.swift; sourceTree = "<group>"; };
 		AC1391441D2DCF7F004C9058 /* Charts.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Charts.xcodeproj; path = "../../../Downloads/Charts-master/Charts/Charts.xcodeproj"; sourceTree = "<group>"; };
+		AC1391581D331A91004C9058 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +119,7 @@
 		AC1391291D2C0C01004C9058 /* Fuse Score */ = {
 			isa = PBXGroup;
 			children = (
+				AC1391581D331A91004C9058 /* SettingsViewController.swift */,
 				AC1391421D2C5397004C9058 /* AllScoresViewController.swift */,
 				AC13912A1D2C0C01004C9058 /* AppDelegate.swift */,
 				AC13912C1D2C0C01004C9058 /* ViewController.swift */,
@@ -255,6 +258,7 @@
 				AC13912D1D2C0C01004C9058 /* ViewController.swift in Sources */,
 				AC13913F1D2C17C4004C9058 /* Score.swift in Sources */,
 				AC13912B1D2C0C01004C9058 /* AppDelegate.swift in Sources */,
+				AC1391591D331A91004C9058 /* SettingsViewController.swift in Sources */,
 				AC1391431D2C5397004C9058 /* AllScoresViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

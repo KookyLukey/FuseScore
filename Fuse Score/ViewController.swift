@@ -29,9 +29,9 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let sendButton = UIBarButtonItem(title: "Settings", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(ViewController.settings(_:)))
+        let settingsButton = UIBarButtonItem(title: "Settings", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(ViewController.settings(_:)))
         
-        self.navigationItem.rightBarButtonItem = sendButton
+        self.navigationItem.rightBarButtonItem = settingsButton
         loadData()
     }
 
@@ -42,7 +42,7 @@ class ViewController: UIViewController {
     
     func settings(sender: UIBarButtonItem){
         
-        
+        performSegueWithIdentifier("settingsSegue", sender: self)
         
     }
     

@@ -15,13 +15,22 @@ class AllScoresViewController: UIViewController, ChartViewDelegate {
     @IBOutlet weak var chartView: BarChartView!
     @IBOutlet weak var grandTotalTextView: UITextView!
     
+    let settings = SettingsViewController()
+    
     var rowArr:[Int]!
     var cycleArr:[Int]!
     var skiArr:[Int]!
     var totalArr:[Int]!
     var dateArr:[String]!
     
+    var tempRowArr:[Int]!
+    var tempCycleArr:[Int]!
+    var tempSkiArr:[Int]!
+    var tempTotalArr:[Int]!
+    var tempDateArr:[String]!
+    
     var grandTotal = 0
+    var graphCeiling = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,6 +53,18 @@ class AllScoresViewController: UIViewController, ChartViewDelegate {
         }
         
         grandTotalTextView.text = String(grandTotal)
+    }
+    
+    func getSelectorValue(value: Int){
+        
+        switch settings.getGraphSelection() {
+        case 0:
+            graphCeiling = 7
+        case 1:
+            graphCeiling = 30
+        default:
+            graphCeiling = 0
+        }
     }
     
     func setChartData(days : [String]) {
