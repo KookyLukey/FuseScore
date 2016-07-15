@@ -9,10 +9,11 @@
 import UIKit
 
 class SettingsViewController: UIViewController {
-
-    @IBOutlet weak var segmentedControl: UISegmentedControl!
     
-    var graphSelection = 0
+    @IBOutlet weak var label: UILabel!
+    var graphSelection = 99
+    
+    let main = ViewController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,26 +26,24 @@ class SettingsViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func segCntrlIndexChanged(sender: AnyObject) {
-        
-        switch segmentedControl.selectedSegmentIndex
-        {
-        case 0:
-            graphSelection = 0
-        case 1:
-            graphSelection = 1
-        case 2:
-            graphSelection = 2
-        default:
-            graphSelection = 2
-        }
-        
-    }
-    
     func getGraphSelection() -> Int{
         
         return graphSelection
     }
     
+    @IBAction func oneWeek(sender: AnyObject) {
+        GlobalVar.graphSelect = 7
+    }
 
+    @IBAction func oneMonth(sender: AnyObject) {
+        GlobalVar.graphSelect = 30
+    }
+    
+    @IBAction func allTime(sender: AnyObject) {
+        GlobalVar.graphSelect = 99
+    }
+    
+    @IBAction func clearAll(sender: AnyObject) {
+        GlobalVar.clearBool = true
+    }
 }

@@ -159,50 +159,74 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="FuseScore.png" translatesAutoresizingMaskIntoConstraints="NO" id="ZS9-3l-Gye">
                                 <rect key="frame" x="189" y="72" width="223" height="37"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="37" id="9oZ-RN-lVM"/>
-                                    <constraint firstAttribute="width" constant="223" id="Evd-n6-vvq"/>
+                                    <constraint firstAttribute="width" constant="223" id="2EI-Ue-4MN"/>
+                                    <constraint firstAttribute="height" constant="37" id="dGy-cw-cwf"/>
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BIg-NJ-fzt">
                                 <rect key="frame" x="254" y="550" width="93" height="30"/>
                                 <state key="normal" title="Clear All Data">
-                                    <color key="titleColor" red="0.0" green="0.1176470588" blue="0.5568627451" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" red="0.52941176469999995" green="0.75686274509999996" blue="0.18039215689999999" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
-                            </button>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Dy5-Fk-tii">
-                                <rect key="frame" x="189" y="199" width="223" height="29"/>
-                                <segments>
-                                    <segment title="1 Week"/>
-                                    <segment title="1 Month"/>
-                                    <segment title="All time"/>
-                                </segments>
-                                <color key="tintColor" red="0.52941176469999995" green="0.75686274509999996" blue="0.18039215689999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
-                                    <action selector="segCntrlIndexChanged:" destination="TIK-WA-qOT" eventType="valueChanged" id="cqB-xx-wPN"/>
+                                    <action selector="clearAll:" destination="TIK-WA-qOT" eventType="touchUpInside" id="yum-oq-1oY"/>
                                 </connections>
-                            </segmentedControl>
+                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Number of days shown in graph" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cIb-Df-YMn">
                                 <rect key="frame" x="179" y="170" width="243" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.1176470588" blue="0.5568627451" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Whu-V4-xQS">
+                                <rect key="frame" x="179" y="199" width="243" height="30"/>
+                                <state key="normal" title="One Week">
+                                    <color key="titleColor" red="0.52941176469999995" green="0.75686274509999996" blue="0.18039215689999999" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="oneWeek:" destination="TIK-WA-qOT" eventType="touchUpInside" id="8d2-1w-t21"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u32-Vc-PGT">
+                                <rect key="frame" x="179" y="237" width="243" height="30"/>
+                                <state key="normal" title="One Month">
+                                    <color key="titleColor" red="0.52941176469999995" green="0.75686274509999996" blue="0.18039215689999999" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="oneMonth:" destination="TIK-WA-qOT" eventType="touchUpInside" id="wk7-LH-rHY"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ljV-t1-aAL">
+                                <rect key="frame" x="179" y="275" width="243" height="30"/>
+                                <state key="normal" title="All Time">
+                                    <color key="titleColor" red="0.52941176469999995" green="0.75686274509999996" blue="0.18039215689999999" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="allTime:" destination="TIK-WA-qOT" eventType="touchUpInside" id="XzG-pe-2ZW"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="ZS9-3l-Gye" firstAttribute="top" secondItem="jwP-Ly-ond" secondAttribute="bottom" constant="8" symbolic="YES" id="49Y-Gh-M5W"/>
-                            <constraint firstItem="ZS9-3l-Gye" firstAttribute="trailing" secondItem="Dy5-Fk-tii" secondAttribute="trailing" id="8eh-Fb-Iqb"/>
-                            <constraint firstItem="ZS9-3l-Gye" firstAttribute="leading" secondItem="Dy5-Fk-tii" secondAttribute="leading" id="9oU-3R-tJ5"/>
-                            <constraint firstItem="cIb-Df-YMn" firstAttribute="top" secondItem="ZS9-3l-Gye" secondAttribute="bottom" constant="61" id="CbR-FG-oSe"/>
-                            <constraint firstItem="cIb-Df-YMn" firstAttribute="centerX" secondItem="Dy5-Fk-tii" secondAttribute="centerX" id="KND-XN-wEc"/>
-                            <constraint firstItem="ZS9-3l-Gye" firstAttribute="centerX" secondItem="IP4-iy-vmQ" secondAttribute="centerX" id="OAf-gb-UeI"/>
-                            <constraint firstAttribute="bottom" secondItem="BIg-NJ-fzt" secondAttribute="bottom" constant="20" symbolic="YES" id="UnY-Lk-sCk"/>
-                            <constraint firstItem="Dy5-Fk-tii" firstAttribute="top" secondItem="cIb-Df-YMn" secondAttribute="bottom" constant="8" symbolic="YES" id="aVG-de-bE2"/>
-                            <constraint firstItem="Dy5-Fk-tii" firstAttribute="centerX" secondItem="BIg-NJ-fzt" secondAttribute="centerX" id="gNu-0v-qTi"/>
+                            <constraint firstItem="u32-Vc-PGT" firstAttribute="trailing" secondItem="ljV-t1-aAL" secondAttribute="trailing" id="2sk-zN-fdk"/>
+                            <constraint firstItem="cIb-Df-YMn" firstAttribute="trailing" secondItem="Whu-V4-xQS" secondAttribute="trailing" id="FHb-0i-OG8"/>
+                            <constraint firstItem="Whu-V4-xQS" firstAttribute="leading" secondItem="u32-Vc-PGT" secondAttribute="leading" id="Lcf-j4-N8x"/>
+                            <constraint firstItem="ljV-t1-aAL" firstAttribute="centerX" secondItem="BIg-NJ-fzt" secondAttribute="centerX" id="WPw-dr-vnd"/>
+                            <constraint firstItem="cIb-Df-YMn" firstAttribute="leading" secondItem="Whu-V4-xQS" secondAttribute="leading" id="Wc3-kJ-wcy"/>
+                            <constraint firstItem="ljV-t1-aAL" firstAttribute="top" secondItem="u32-Vc-PGT" secondAttribute="bottom" constant="8" symbolic="YES" id="Wma-Bm-OhP"/>
+                            <constraint firstItem="u32-Vc-PGT" firstAttribute="leading" secondItem="ljV-t1-aAL" secondAttribute="leading" id="YEj-En-Ddy"/>
+                            <constraint firstItem="u32-Vc-PGT" firstAttribute="top" secondItem="Whu-V4-xQS" secondAttribute="bottom" constant="8" symbolic="YES" id="bHK-Os-Y9i"/>
+                            <constraint firstItem="cIb-Df-YMn" firstAttribute="top" secondItem="ZS9-3l-Gye" secondAttribute="bottom" constant="61" id="eca-ui-A96"/>
+                            <constraint firstItem="ZS9-3l-Gye" firstAttribute="centerX" secondItem="cIb-Df-YMn" secondAttribute="centerX" id="oBF-RW-olG"/>
+                            <constraint firstItem="Whu-V4-xQS" firstAttribute="top" secondItem="cIb-Df-YMn" secondAttribute="bottom" constant="8" symbolic="YES" id="pJ7-Tx-QkV"/>
+                            <constraint firstItem="Whu-V4-xQS" firstAttribute="trailing" secondItem="u32-Vc-PGT" secondAttribute="trailing" id="qhT-3l-cjI"/>
+                            <constraint firstAttribute="bottom" secondItem="BIg-NJ-fzt" secondAttribute="bottom" constant="20" symbolic="YES" id="sea-yB-aI2"/>
+                            <constraint firstItem="ZS9-3l-Gye" firstAttribute="centerX" secondItem="IP4-iy-vmQ" secondAttribute="centerX" id="uDc-9w-Ly9"/>
+                            <constraint firstItem="ZS9-3l-Gye" firstAttribute="top" secondItem="jwP-Ly-ond" secondAttribute="bottom" constant="8" symbolic="YES" id="vgP-a5-fp7"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="segmentedControl" destination="Dy5-Fk-tii" id="E4O-pe-jdQ"/>
+                        <outlet property="label" destination="cIb-Df-YMn" id="76d-DP-JTg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aRG-OJ-k8U" userLabel="First Responder" sceneMemberID="firstResponder"/>

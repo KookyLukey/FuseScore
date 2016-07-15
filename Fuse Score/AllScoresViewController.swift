@@ -23,12 +23,6 @@ class AllScoresViewController: UIViewController, ChartViewDelegate {
     var totalArr:[Int]!
     var dateArr:[String]!
     
-    var tempRowArr:[Int]!
-    var tempCycleArr:[Int]!
-    var tempSkiArr:[Int]!
-    var tempTotalArr:[Int]!
-    var tempDateArr:[String]!
-    
     var grandTotal = 0
     var graphCeiling = 0
     
@@ -44,7 +38,7 @@ class AllScoresViewController: UIViewController, ChartViewDelegate {
         // 4
         self.chartView.noDataText = "No data provided"
         // 5
-        setChartData(dateArr)
+        setChartData(Array(dateArr.suffix(GlobalVar.graphSelect)))
         
         for i in 0 ..< totalArr.count {
             
@@ -55,23 +49,16 @@ class AllScoresViewController: UIViewController, ChartViewDelegate {
         grandTotalTextView.text = String(grandTotal)
     }
     
-    func getSelectorValue(value: Int){
-        
-        switch settings.getGraphSelection() {
-        case 0:
-            graphCeiling = 7
-        case 1:
-            graphCeiling = 30
-        default:
-            graphCeiling = 0
-        }
-    }
-    
     func setChartData(days : [String]) {
         // 1 - creating an array of data entries
+        var tempRowArr = Array(rowArr.suffix(GlobalVar.graphSelect))
+        var tempSkiArr = Array(skiArr.suffix(GlobalVar.graphSelect))
+        var tempCycleArr = Array(cycleArr.suffix(GlobalVar.graphSelect))
+        
+        
         var yVals1 : [ChartDataEntry] = [ChartDataEntry]()
-        for i in 0 ..< rowArr.count {
-            yVals1.append(ChartDataEntry(value: Double(rowArr[i]), xIndex: i))
+        for i in 0 ..< tempRowArr.count {
+            yVals1.append(ChartDataEntry(value: Double(tempRowArr[i]), xIndex: i))
         }
         
         // 2 - create a data set with our array
@@ -87,8 +74,8 @@ class AllScoresViewController: UIViewController, ChartViewDelegate {
         set1.drawCircleHoleEnabled = true
         
         var yVals2 : [ChartDataEntry] = [ChartDataEntry]()
-        for i in 0 ..< cycleArr.count {
-            yVals2.append(ChartDataEntry(value: Double(cycleArr[i]), xIndex: i))
+        for i in 0 ..< tempCycleArr.count {
+            yVals2.append(ChartDataEntry(value: Double(tempCycleArr[i]), xIndex: i))
         }
         
         let set2: LineChartDataSet = LineChartDataSet(yVals: yVals2, label: "Cycle")
@@ -103,8 +90,8 @@ class AllScoresViewController: UIViewController, ChartViewDelegate {
         set2.drawCircleHoleEnabled = true
         
         var yVals3 : [ChartDataEntry] = [ChartDataEntry]()
-        for i in 0 ..< skiArr.count {
-            yVals3.append(ChartDataEntry(value: Double(skiArr[i]), xIndex: i))
+        for i in 0 ..< tempSkiArr.count {
+            yVals3.append(ChartDataEntry(value: Double(tempSkiArr[i]), xIndex: i))
         }
         
         let set3: LineChartDataSet = LineChartDataSet(yVals: yVals3, label: "Ski")

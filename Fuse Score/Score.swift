@@ -23,3 +23,8 @@ class rowCycleSki {
         self.total = total
     }
 }
+
+struct GlobalVar {
+    static var graphSelect = 7
+    static var clearBool = false
+}

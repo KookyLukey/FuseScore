@@ -29,6 +29,19 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if(GlobalVar.clearBool == true){
+            let appDomain = NSBundle.mainBundle().bundleIdentifier!
+            
+            NSUserDefaults.standardUserDefaults().removePersistentDomainForName(appDomain)
+            rowArr.removeAll()
+            cycleArr.removeAll()
+            skiArr.removeAll()
+            totalArr.removeAll()
+            dateArr.removeAll()
+            GlobalVar.clearBool = false
+        }
+        
         let settingsButton = UIBarButtonItem(title: "Settings", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(ViewController.settings(_:)))
         
         self.navigationItem.rightBarButtonItem = settingsButton
