@@ -37,7 +37,12 @@ class AllScoresViewController: UIViewController, ChartViewDelegate {
         self.chartView.gridBackgroundColor = UIColor.darkGrayColor()
         // 4
         self.chartView.noDataText = "No data provided"
-        // 5
+        self.chartView.leftAxis.axisMinValue = 5
+        self.chartView.leftAxis.axisMaxValue = 20
+        self.chartView.leftAxis.labelCount = Int(10)
+        self.chartView.rightAxis.axisMinValue = 5
+        self.chartView.rightAxis.axisMaxValue = 20
+        self.chartView.rightAxis.labelCount = Int(10)
         setChartData(Array(dateArr.suffix(GlobalVar.graphSelect)))
         
         for i in 0 ..< totalArr.count {

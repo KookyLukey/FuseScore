@@ -26,14 +26,10 @@ class ViewController: UIViewController {
     var currentDate = NSDate()
     let dateFormatter = NSDateFormatter()
     
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
+    override func viewWillAppear(animated: Bool) {
         if(GlobalVar.clearBool == true){
-            let appDomain = NSBundle.mainBundle().bundleIdentifier!
-            
-            NSUserDefaults.standardUserDefaults().removePersistentDomainForName(appDomain)
+            NSUserDefaults.standardUserDefaults().removePersistentDomainForName(NSBundle.mainBundle().bundleIdentifier!)
+            NSUserDefaults.standardUserDefaults().synchronize()
             rowArr.removeAll()
             cycleArr.removeAll()
             skiArr.removeAll()
@@ -41,11 +37,17 @@ class ViewController: UIViewController {
             dateArr.removeAll()
             GlobalVar.clearBool = false
         }
+        loadData()
+
+    }
+    
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
         
         let settingsButton = UIBarButtonItem(title: "Settings", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(ViewController.settings(_:)))
         
         self.navigationItem.rightBarButtonItem = settingsButton
-        loadData()
     }
 
     override func didReceiveMemoryWarning() {
