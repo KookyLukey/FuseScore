@@ -26,8 +26,13 @@ class AllScoresViewController: UIViewController, ChartViewDelegate {
     var grandTotal = 0
     var graphCeiling = 0
     
+    let fuseGreen = UIColor(red: 150.0/255, green: 202.0/255, blue: 56.0/255, alpha: 1)
+    let fuseBlue = UIColor(red: 0.0/255, green: 50.0/255, blue: 164.0/255, alpha: 1)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.navigationController?.navigationBar.tintColor = fuseGreen
         
         self.chartView.delegate = self
         // 2
@@ -37,12 +42,19 @@ class AllScoresViewController: UIViewController, ChartViewDelegate {
         self.chartView.gridBackgroundColor = UIColor.darkGrayColor()
         // 4
         self.chartView.noDataText = "No data provided"
+        
         self.chartView.leftAxis.axisMinValue = 5
         self.chartView.leftAxis.axisMaxValue = 20
         self.chartView.leftAxis.labelCount = Int(10)
+        self.chartView.leftAxis.labelTextColor = fuseBlue
+        
         self.chartView.rightAxis.axisMinValue = 5
         self.chartView.rightAxis.axisMaxValue = 20
         self.chartView.rightAxis.labelCount = Int(10)
+        self.chartView.rightAxis.labelTextColor = fuseBlue
+        
+        self.chartView.xAxis.labelTextColor = fuseBlue
+        
         setChartData(Array(dateArr.suffix(GlobalVar.graphSelect)))
         
         for i in 0 ..< totalArr.count {

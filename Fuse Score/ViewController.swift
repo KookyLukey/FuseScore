@@ -26,6 +26,9 @@ class ViewController: UIViewController {
     var currentDate = NSDate()
     let dateFormatter = NSDateFormatter()
     
+    let fuseGreen = UIColor(red: 150.0/255, green: 202.0/255, blue: 56.0/255, alpha: 1)
+    let fuseBlue = UIColor(red: 0.0/255, green: 50.0/255, blue: 164.0/255, alpha: 1)
+    
     override func viewWillAppear(animated: Bool) {
         if(GlobalVar.clearBool == true){
             NSUserDefaults.standardUserDefaults().removePersistentDomainForName(NSBundle.mainBundle().bundleIdentifier!)
@@ -45,9 +48,15 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(ViewController.dismissKeyboard))
+        view.addGestureRecognizer(tap)
+        
         let settingsButton = UIBarButtonItem(title: "Settings", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(ViewController.settings(_:)))
         
         self.navigationItem.rightBarButtonItem = settingsButton
+        self.navigationItem.rightBarButtonItem?.tintColor = fuseGreen
+        self.title = "FuseScore"
+        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: fuseBlue]
     }
 
     override func didReceiveMemoryWarning() {
@@ -59,6 +68,11 @@ class ViewController: UIViewController {
         
         performSegueWithIdentifier("settingsSegue", sender: self)
         
+    }
+    
+    func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {

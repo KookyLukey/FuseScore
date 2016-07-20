@@ -13,12 +13,15 @@ class SettingsViewController: UIViewController {
     @IBOutlet weak var label: UILabel!
     var graphSelection = 99
     
+    let fuseGreen = UIColor(red: 150.0/255, green: 202.0/255, blue: 56.0/255, alpha: 1)
+    let fuseBlue = UIColor(red: 0.0/255, green: 50.0/255, blue: 164.0/255, alpha: 1)
+    
     let main = ViewController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        self.navigationController?.navigationBar.tintColor = fuseGreen
     }
 
     override func didReceiveMemoryWarning() {
