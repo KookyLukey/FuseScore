@@ -12,10 +12,13 @@ class ViewController: UIViewController {
     
     //MARK: Properties
     
+    @IBOutlet weak var imageV: UIImageView!
     @IBOutlet weak var rowTextField: UITextField!
     @IBOutlet weak var cycleTextField: UITextField!
     @IBOutlet weak var skiTextField: UITextField!
     @IBOutlet weak var totalTextView: UITextView!
+    @IBOutlet weak var saveButton: UIButton!
+    @IBOutlet weak var previousScoresButton: UIButton!
     
     var rowArr: [Int] = []
     var cycleArr: [Int] = []
@@ -47,6 +50,8 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        imageV.contentMode = .ScaleAspectFit
         
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(ViewController.dismissKeyboard))
         view.addGestureRecognizer(tap)
@@ -92,7 +97,16 @@ class ViewController: UIViewController {
         
         var total: Int = 0;
         
-        if(rowTextField != nil && cycleTextField != nil && skiTextField != nil){
+        if(rowTextField.text == "" || cycleTextField.text == "" || skiTextField.text == ""){
+            let alert = UIAlertController(title: "Insufficient Data", message: "One or more of the fields are empty.", preferredStyle: UIAlertControllerStyle.Alert)
+            
+            alert.addAction(UIAlertAction(title: "Ok", style: .Default, handler: { (action: UIAlertAction!) in
+            }))
+            
+            presentViewController(alert, animated: true, completion: nil)
+        }
+        
+        else{
             
             let rowText: String = rowTextField.text!
             let cycleText: String = cycleTextField.text!
@@ -104,29 +118,29 @@ class ViewController: UIViewController {
             
             if  (rowNum != nil){
                 total += rowNum!
+                rowArr.append(rowNum!)
             }
             if  (cycleNum != nil){
                 total += cycleNum!
+                cycleArr.append(cycleNum!)
             }
             
             if  (skiNum != nil){
                 total += skiNum!
+                skiArr.append(skiNum!)
             }
-            rowArr.append(rowNum!)
-            cycleArr.append(cycleNum!)
-            skiArr.append(skiNum!)
             totalArr.append(total)
             
             dateFormatter.dateStyle = NSDateFormatterStyle.ShortStyle
             let convertedDate = dateFormatter.stringFromDate(currentDate)
             dateArr.append(convertedDate)
+
+            totalTextView.text = String(total)
+            clearTextField(rowTextField)
+            clearTextField(cycleTextField)
+            clearTextField(skiTextField)
+            saveData()
         }
-        
-        totalTextView.text = String(total)
-        clearTextField(rowTextField)
-        clearTextField(cycleTextField)
-        clearTextField(skiTextField)
-        saveData()
     }
     
     @IBAction func previousScores(sender: AnyObject) {

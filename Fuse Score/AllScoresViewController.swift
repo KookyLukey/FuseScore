@@ -32,6 +32,9 @@ class AllScoresViewController: UIViewController, ChartViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.title = "Previous Scores"
+        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: fuseBlue]
+        
         self.navigationController?.navigationBar.tintColor = fuseGreen
         
         self.chartView.delegate = self
