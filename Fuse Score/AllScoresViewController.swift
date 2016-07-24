@@ -37,6 +37,11 @@ class AllScoresViewController: UIViewController, ChartViewDelegate {
         
         self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
         
+        let listButton = UIBarButtonItem(title: "Text View", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(AllScoresViewController.listText(_:)))
+        
+        self.navigationItem.rightBarButtonItem = listButton
+        self.navigationItem.rightBarButtonItem?.tintColor = UIColor.whiteColor()
+        
         self.chartView.delegate = self
         // 2
         self.chartView.descriptionText = "Tap node for details"
@@ -46,14 +51,18 @@ class AllScoresViewController: UIViewController, ChartViewDelegate {
         // 4
         self.chartView.noDataText = "No data provided"
         
+        self.chartView.leftAxis.valueFormatter = NSNumberFormatter()
+        self.chartView.leftAxis.valueFormatter?.minimumFractionDigits = 0
         self.chartView.leftAxis.axisMinValue = 5
-        self.chartView.leftAxis.axisMaxValue = 20
-        self.chartView.leftAxis.labelCount = Int(10)
+        self.chartView.leftAxis.axisMaxValue = 18
+        self.chartView.leftAxis.labelCount = Int(8)
         self.chartView.leftAxis.labelTextColor = fuseBlue
         
+        self.chartView.rightAxis.valueFormatter = NSNumberFormatter()
+        self.chartView.rightAxis.valueFormatter?.minimumFractionDigits = 0
         self.chartView.rightAxis.axisMinValue = 5
-        self.chartView.rightAxis.axisMaxValue = 20
-        self.chartView.rightAxis.labelCount = Int(10)
+        self.chartView.rightAxis.axisMaxValue = 18
+        self.chartView.rightAxis.labelCount = Int(8)
         self.chartView.rightAxis.labelTextColor = fuseBlue
         
         self.chartView.xAxis.labelTextColor = fuseBlue
@@ -67,6 +76,25 @@ class AllScoresViewController: UIViewController, ChartViewDelegate {
         }
         
         grandTotalTextView.text = String(grandTotal)
+    }
+    
+    func listText(sender: UIBarButtonItem){
+        
+        performSegueWithIdentifier("listRawData", sender: self)
+        
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+        if (segue.identifier == "listRawData") {
+            let svc = segue.destinationViewController as! listDataViewController;
+            
+            svc.rowArr = rowArr
+            svc.cycleArr = cycleArr
+            svc.skiArr = skiArr
+            svc.totalArr = totalArr
+            svc.dateArr = dateArr
+            
+        }
     }
     
     func setChartData(days : [String]) {
@@ -87,7 +115,7 @@ class AllScoresViewController: UIViewController, ChartViewDelegate {
         set1.setColor(UIColor.redColor().colorWithAlphaComponent(0.5)) // our line's opacity is 50%
         set1.setCircleColor(UIColor.redColor()) // our circle will be dark red
         set1.lineWidth = 2.0
-        set1.circleRadius = 6.0 // the radius of the node circle
+        set1.circleRadius = 4.0 // the radius of the node circle
         set1.fillAlpha = 65 / 255.0
         set1.fillColor = UIColor.redColor()
         set1.highlightColor = UIColor.whiteColor()
@@ -103,7 +131,7 @@ class AllScoresViewController: UIViewController, ChartViewDelegate {
         set2.setColor(UIColor.greenColor().colorWithAlphaComponent(0.5))
         set2.setCircleColor(UIColor.greenColor())
         set2.lineWidth = 2.0
-        set2.circleRadius = 6.0
+        set2.circleRadius = 4.0
         set2.fillAlpha = 65 / 255.0
         set2.fillColor = UIColor.greenColor()
         set2.highlightColor = UIColor.whiteColor()
@@ -119,7 +147,7 @@ class AllScoresViewController: UIViewController, ChartViewDelegate {
         set3.setColor(UIColor.blueColor().colorWithAlphaComponent(0.5))
         set3.setCircleColor(UIColor.blueColor())
         set3.lineWidth = 2.0
-        set3.circleRadius = 6.0
+        set3.circleRadius = 4.0
         set3.fillAlpha = 65 / 255.0
         set3.fillColor = UIColor.blueColor()
         set3.highlightColor = UIColor.whiteColor()

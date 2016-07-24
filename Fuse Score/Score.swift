@@ -27,4 +27,10 @@ class rowCycleSki {
 struct GlobalVar {
     static var graphSelect = 7
     static var clearBool = false
+    
+    var textRowArray:[Int] = []
+    var textCycleArray:[Int] = []
+    var textSkiArray:[Int] = []
+    var textDateArray:[String] = []
+    var textTotalArray:[Int] = []
 }
