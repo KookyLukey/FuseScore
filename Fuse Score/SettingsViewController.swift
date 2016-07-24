@@ -22,9 +22,9 @@ class SettingsViewController: UIViewController {
         super.viewDidLoad()
         
         self.title = "Settings"
-        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: fuseBlue]
+        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
 
-        self.navigationController?.navigationBar.tintColor = fuseGreen
+        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
     }
 
     override func didReceiveMemoryWarning() {

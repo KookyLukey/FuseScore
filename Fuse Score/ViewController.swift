@@ -59,9 +59,10 @@ class ViewController: UIViewController {
         let settingsButton = UIBarButtonItem(title: "Settings", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(ViewController.settings(_:)))
         
         self.navigationItem.rightBarButtonItem = settingsButton
-        self.navigationItem.rightBarButtonItem?.tintColor = fuseGreen
+        self.navigationItem.rightBarButtonItem?.tintColor = UIColor.whiteColor()
         self.title = "FuseScore"
-        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: fuseBlue]
+        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
+        self.navigationController?.navigationBar.barTintColor = fuseGreen
     }
 
     override func didReceiveMemoryWarning() {

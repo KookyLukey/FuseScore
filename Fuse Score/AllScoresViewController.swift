@@ -33,9 +33,9 @@ class AllScoresViewController: UIViewController, ChartViewDelegate {
         super.viewDidLoad()
         
         self.title = "Previous Scores"
-        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: fuseBlue]
+        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
         
-        self.navigationController?.navigationBar.tintColor = fuseGreen
+        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
         
         self.chartView.delegate = self
         // 2
@@ -133,7 +133,7 @@ class AllScoresViewController: UIViewController, ChartViewDelegate {
         
         //4 - pass our months in for our x-axis label value along with our dataSets
         let data: LineChartData = LineChartData(xVals: days, dataSets: dataSets)
-        data.setValueTextColor(UIColor.whiteColor())
+        data.setDrawValues(false)
         
         //5 - finally set our data
         self.chartView.data = data
