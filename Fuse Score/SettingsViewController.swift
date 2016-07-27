@@ -65,19 +65,15 @@ class SettingsViewController: UIViewController {
         return graphSelection
     }
     
-    @IBAction func oneWeek(sender: AnyObject) {
-        GlobalVar.graphSelect = 7
-    }
-
-    @IBAction func oneMonth(sender: AnyObject) {
-        GlobalVar.graphSelect = 30
-    }
-    
-    @IBAction func allTime(sender: AnyObject) {
-        GlobalVar.graphSelect = 99
-    }
-    
     @IBAction func clearAll(sender: AnyObject) {
-        GlobalVar.clearBool = true
+        let alert = UIAlertController(title: "Warning", message: "You are about to erase all of your recorded data, are you sure you want to continue?", preferredStyle: UIAlertControllerStyle.Alert)
+        alert.addAction(UIAlertAction(title: "Yes", style: UIAlertActionStyle.Default, handler: { action in
+            
+            GlobalVar.clearBool = true
+            
+        }))
+        
+        alert.addAction(UIAlertAction(title: "No", style: UIAlertActionStyle.Default, handler: nil))
+        self.presentViewController(alert, animated: true, completion: nil)
     }
 }
