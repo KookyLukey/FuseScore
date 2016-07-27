@@ -10,7 +10,9 @@ import UIKit
 
 class SettingsViewController: UIViewController {
     
+    @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var label: UILabel!
+    
     var graphSelection = 99
     
     let fuseGreen = UIColor(red: 150.0/255, green: 202.0/255, blue: 56.0/255, alpha: 1)
@@ -26,10 +28,36 @@ class SettingsViewController: UIViewController {
 
         self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
     }
+    
+    override func viewWillAppear(animated: Bool) {
+        switch GlobalVar.graphSelect{
+            case 7:
+                segmentedControl.selectedSegmentIndex = 0
+            case 30:
+                segmentedControl.selectedSegmentIndex = 1
+            default:
+                segmentedControl.selectedSegmentIndex = 2
+        }
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    @IBAction func indexChanged(sender: AnyObject) {
+        
+        switch segmentedControl.selectedSegmentIndex
+        {
+        case 0:
+            GlobalVar.graphSelect = 7;
+        case 1:
+            GlobalVar.graphSelect = 30;
+        case 2:
+            GlobalVar.graphSelect = 9999;
+        default:
+            break; 
+        }
     }
     
     func getGraphSelection() -> Int{
